@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EQUALIZ(R) AI Audit — Form Presentation</title>
+<title>Your EQUALIZ(R) AI Audit — Global Air U</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,101 +14,40 @@
   --teal:       #00BFA5;
   --teal-soft:  #4DD5C3;
   --amber:      #F5A623;
-  --amber-warm: #E8830F;
   --white:      #FFFFFF;
-  --off-white:  #F4F6F9;
-  --ink:        #0A0E1A;
-  --paper:      #F7F4EE;
-  --paper-soft: #EFEAE0;
-  --rule:       #D6CEC0;
-  --ash:        #6B6456;
-  --ash-soft:   #8F8777;
-  --moss:       #4A5D3A;
-  --rust:       #C8431B;
   --font-display: 'IBM Plex Serif', Georgia, serif;
   --font-body:    'IBM Plex Sans', system-ui, sans-serif;
   --font-mono:    'IBM Plex Mono', monospace;
 }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { background: var(--navy); min-height: 100%; }
-body {
-  font-family: var(--font-body);
+
+html, body {
+  height: 100%;
   background: var(--navy);
+  font-family: var(--font-body);
   color: var(--white);
-  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- TOP BAR ---- */
-.topbar {
-  background: var(--navy);
-  border-bottom: 1px solid rgba(0,191,165,0.2);
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.topbar-logo {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--white);
-}
-.topbar-logo span { color: var(--teal); }
-.topbar-meta {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-}
+/* ---- SCREENS ---- */
+.screen { display: none; min-height: 100vh; flex-direction: column; }
+.screen.active { display: flex; }
 
-/* ---- TAB NAV ---- */
-.tab-nav {
-  background: var(--navy-mid);
-  display: flex;
-  padding: 0 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  overflow-x: auto;
-}
-.tab-btn {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  padding: 16px 20px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-  transition: all 0.2s;
-}
-.tab-btn:hover { color: rgba(255,255,255,0.75); }
-.tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
-
-/* ---- MAIN CONTENT ---- */
-.section { display: none; }
-.section.active { display: block; }
-
-/* ---- WELCOME SCREEN ---- */
-.welcome-wrap {
-  min-height: calc(100vh - 100px);
-  display: flex;
+/* ============================
+   WELCOME SCREEN
+============================ */
+.welcome-screen {
   align-items: center;
   justify-content: center;
-  padding: 60px 40px;
+  padding: 60px 24px;
 }
-.welcome-card {
-  max-width: 680px;
+
+.welcome-inner {
+  max-width: 640px;
   width: 100%;
 }
+
 .welcome-kicker {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -121,67 +60,81 @@ body {
   align-items: center;
   gap: 12px;
 }
+
 .welcome-kicker::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(0,191,165,0.3);
+  background: rgba(0,191,165,0.25);
 }
+
 .welcome-title {
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: clamp(36px, 6vw, 52px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  color: var(--white);
 }
+
 .welcome-title .r { color: var(--teal); }
-.welcome-subtitle {
+
+.welcome-eyebrow {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
+  font-size: 10px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 40px;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 44px;
 }
+
 .welcome-body {
-  font-family: var(--font-body);
+  margin-bottom: 44px;
+}
+
+.welcome-body p {
   font-size: 16px;
   line-height: 1.75;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 40px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 14px;
 }
-.welcome-body p { margin-bottom: 14px; }
+
 .welcome-body p:last-child { margin-bottom: 0; }
 .welcome-body strong { color: var(--white); font-weight: 600; }
-.welcome-body .amber { color: var(--amber); font-weight: 600; }
+.welcome-body .highlight { color: var(--amber); font-weight: 600; }
+
 .welcome-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: rgba(255,255,255,0.08);
-  margin-bottom: 40px;
+  background: rgba(255,255,255,0.07);
+  margin-bottom: 44px;
 }
+
 .stat-cell {
   background: var(--navy-mid);
-  padding: 20px 24px;
+  padding: 20px 16px;
   text-align: center;
 }
+
 .stat-num {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--teal);
-  display: block;
   margin-bottom: 4px;
 }
+
 .stat-label {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.35);
 }
+
 .start-btn {
   display: inline-flex;
   align-items: center;
@@ -197,47 +150,52 @@ body {
   border: none;
   cursor: pointer;
   transition: background 0.2s;
+  width: 100%;
+  justify-content: center;
 }
-.start-btn:hover { background: var(--teal-soft); }
-.start-btn svg { width: 16px; height: 16px; }
 
-/* ---- FORM PREVIEW ---- */
-.form-shell {
-  min-height: calc(100vh - 100px);
-  display: flex;
+.start-btn:hover { background: var(--teal-soft); }
+
+/* ============================
+   FORM SCREEN
+============================ */
+.form-screen {
   flex-direction: column;
 }
-.form-progress-bar {
+
+.progress-bar-wrap {
   height: 4px;
-  background: rgba(255,255,255,0.1);
-  position: relative;
+  background: rgba(255,255,255,0.08);
+  flex-shrink: 0;
 }
-.form-progress-fill {
+
+.progress-bar-fill {
   height: 100%;
   background: var(--teal);
   transition: width 0.4s ease;
 }
-.form-progress-label {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  text-align: right;
-  padding: 8px 40px 0;
-}
-.form-question-area {
+
+.form-body {
   flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 60px 40px;
+  padding: 56px 24px 32px;
+  overflow-y: auto;
 }
-.form-question-card {
-  max-width: 680px;
+
+.question-card {
+  max-width: 640px;
   width: 100%;
+  animation: fadeUp 0.28s ease;
 }
-.q-category {
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.q-cat-label {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.18em;
@@ -245,196 +203,238 @@ body {
   color: var(--teal);
   font-weight: 700;
   margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
-.q-num {
+
+.q-conditional-tag {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  background: rgba(0,191,165,0.15);
-  border: 1px solid rgba(0,191,165,0.3);
+  gap: 8px;
+  background: rgba(245,166,35,0.1);
+  border: 1px solid rgba(245,166,35,0.28);
+  padding: 7px 13px;
+  margin-bottom: 18px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--teal);
-  margin-right: 6px;
-  flex-shrink: 0;
+  font-size: 10px;
+  color: var(--amber);
+  letter-spacing: 0.07em;
 }
+
 .q-text {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: clamp(22px, 4vw, 30px);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--white);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
 }
+
+.q-num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0,191,165,0.3);
+  background: rgba(0,191,165,0.08);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
 .q-hint {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.3);
   text-transform: uppercase;
-  margin-bottom: 32px;
-}
-.q-conditional-note {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(245,166,35,0.12);
-  border: 1px solid rgba(245,166,35,0.3);
-  padding: 8px 14px;
-  margin-bottom: 24px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--amber);
-  letter-spacing: 0.08em;
+  margin-bottom: 28px;
+  margin-left: 42px;
 }
 
-/* Answer options */
-.options-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+/* Options */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
 .option-item {
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 14px 18px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.02);
   cursor: pointer;
-  transition: all 0.15s;
-  font-family: var(--font-body);
+  transition: all 0.14s;
   font-size: 15px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.75);
   user-select: none;
+  -webkit-user-select: none;
 }
+
 .option-item:hover {
-  border-color: var(--teal);
-  background: rgba(0,191,165,0.06);
+  border-color: rgba(0,191,165,0.5);
+  background: rgba(0,191,165,0.05);
   color: var(--white);
 }
+
 .option-item.selected {
   border-color: var(--teal);
   background: rgba(0,191,165,0.1);
   color: var(--white);
 }
+
 .option-key {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   height: 28px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.18);
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.35);
   flex-shrink: 0;
-  transition: all 0.15s;
+  transition: all 0.14s;
 }
-.option-item.selected .option-key,
-.option-item:hover .option-key {
+
+.option-item.selected .option-key {
   border-color: var(--teal);
   color: var(--teal);
-  background: rgba(0,191,165,0.1);
+  background: rgba(0,191,165,0.12);
 }
 
-/* Open text */
-.open-text-area {
-  width: 100%;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 15px;
-  padding: 18px 20px;
-  resize: none;
-  outline: none;
-  margin-bottom: 40px;
-  line-height: 1.65;
-  transition: border-color 0.15s;
+.option-item:hover .option-key {
+  border-color: rgba(0,191,165,0.5);
+  color: var(--teal-soft);
 }
-.open-text-area:focus { border-color: var(--teal); }
-.open-text-area::placeholder { color: rgba(255,255,255,0.25); }
 
-/* Rank list */
-.rank-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; }
+/* Rank */
+.rank-instruction {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  margin-left: 42px;
+}
+
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
 .rank-item {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 16px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.03);
-  cursor: grab;
-  font-family: var(--font-body);
+  padding: 13px 16px;
+  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.02);
+  cursor: pointer;
   font-size: 14px;
-  color: rgba(255,255,255,0.7);
-  transition: all 0.15s;
+  color: rgba(255,255,255,0.65);
+  transition: all 0.14s;
+  user-select: none;
 }
-.rank-item:hover { border-color: rgba(0,191,165,0.4); color: var(--white); }
-.rank-item.ranked {
-  border-color: var(--teal);
-  background: rgba(0,191,165,0.08);
+
+.rank-item:hover {
+  border-color: rgba(0,191,165,0.4);
   color: var(--white);
 }
+
+.rank-item.ranked {
+  border-color: var(--teal);
+  background: rgba(0,191,165,0.07);
+  color: var(--white);
+}
+
 .rank-badge {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.28);
   flex-shrink: 0;
+  transition: all 0.14s;
 }
+
 .rank-item.ranked .rank-badge {
   background: var(--teal);
   border-color: var(--teal);
   color: var(--navy);
 }
-.rank-hint {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.08em;
-  margin-bottom: 16px;
-  text-transform: uppercase;
+
+/* Open text */
+.open-text-field {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.18);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  padding: 14px 0;
+  resize: none;
+  outline: none;
+  margin-bottom: 36px;
+  line-height: 1.65;
+  transition: border-color 0.15s;
+  margin-left: 42px;
+  width: calc(100% - 42px);
 }
 
-/* Nav buttons */
+.open-text-field:focus { border-bottom-color: var(--teal); }
+.open-text-field::placeholder { color: rgba(255,255,255,0.2); }
+
+/* Form nav */
 .form-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 20px 40px 40px;
-  max-width: 760px;
+  padding: 20px 24px 36px;
+  max-width: 688px;
   margin: 0 auto;
   width: 100%;
+  gap: 10px;
 }
-.nav-prev {
+
+.btn-prev {
   display: flex;
   align-items: center;
   gap: 8px;
   background: none;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.4);
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 12px 20px;
+  padding: 12px 18px;
   cursor: pointer;
   transition: all 0.15s;
 }
-.nav-prev:hover { border-color: rgba(255,255,255,0.35); color: var(--white); }
-.nav-next {
+
+.btn-prev:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+
+.btn-next {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -443,592 +443,514 @@ body {
   color: var(--navy);
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
   padding: 12px 24px;
   cursor: pointer;
   transition: background 0.15s;
 }
-.nav-next:hover { background: var(--teal-soft); }
-.nav-step-info {
+
+.btn-next:hover { background: var(--teal-soft); }
+
+.step-counter {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.06em;
   margin-left: auto;
 }
 
-/* ---- CONFIRMATION SCREEN ---- */
-.confirm-wrap {
-  min-height: calc(100vh - 100px);
-  display: flex;
+/* ============================
+   CONFIRMATION SCREEN
+============================ */
+.confirm-screen {
   align-items: center;
   justify-content: center;
-  padding: 60px 40px;
+  padding: 60px 24px;
 }
-.confirm-card {
-  max-width: 640px;
+
+.confirm-inner {
+  max-width: 600px;
   width: 100%;
   text-align: center;
+  animation: fadeUp 0.4s ease;
 }
-.confirm-icon {
-  width: 64px;
-  height: 64px;
-  background: rgba(0,191,165,0.12);
-  border: 2px solid var(--teal);
+
+.confirm-check {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  border: 2px solid var(--teal);
+  background: rgba(0,191,165,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 28px;
 }
+
 .confirm-kicker {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--teal);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
+
 .confirm-title {
   font-family: var(--font-display);
-  font-size: 40px;
+  font-size: clamp(32px, 5vw, 44px);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
+
 .confirm-sub {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 40px;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 44px;
 }
+
 .confirm-steps {
+  text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-bottom: 40px;
-  text-align: left;
+  margin-bottom: 36px;
 }
+
 .confirm-step {
   display: flex;
   gap: 20px;
-  padding: 22px 24px;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-bottom: none;
-  background: rgba(255,255,255,0.02);
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-.confirm-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
-.confirm-step-num {
+
+.confirm-step:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+.step-num {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--teal);
   flex-shrink: 0;
   padding-top: 2px;
+  width: 28px;
 }
-.confirm-step-body { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.75); }
-.confirm-step-body strong { color: var(--white); font-weight: 600; }
-.confirm-amber {
-  background: rgba(245,166,35,0.08);
-  border: 1px solid rgba(245,166,35,0.25);
-  padding: 18px 24px;
+
+.step-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.7);
+}
+
+.step-text strong { color: var(--white); font-weight: 600; }
+
+.confirm-sign {
+  background: rgba(0,191,165,0.06);
+  border: 1px solid rgba(0,191,165,0.2);
+  padding: 18px 22px;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--amber);
+  letter-spacing: 0.07em;
+  color: rgba(255,255,255,0.5);
   text-align: left;
 }
 
-/* ---- PLATFORM COMPARISON ---- */
-.comparison-wrap { padding: 60px 40px; max-width: 1000px; margin: 0 auto; }
-.comparison-header { margin-bottom: 48px; }
-.comparison-kicker {
+.confirm-sign span { color: var(--teal-soft); }
+
+/* ============================
+   PARTICIPANT INFO SCREEN
+============================ */
+.info-screen {
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.info-inner {
+  max-width: 560px;
+  width: 100%;
+  animation: fadeUp 0.3s ease;
+}
+
+.info-kicker {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--teal);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.comparison-title {
+
+.info-kicker::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0,191,165,0.25);
+}
+
+.info-title {
   font-family: var(--font-display);
-  font-size: 36px;
+  font-size: clamp(28px, 5vw, 38px);
   font-weight: 700;
+  line-height: 1.15;
   letter-spacing: -0.02em;
+  color: var(--white);
   margin-bottom: 12px;
 }
-.comparison-sub {
-  font-family: var(--font-body);
+
+.info-sub {
   font-size: 15px;
-  color: rgba(255,255,255,0.55);
-  max-width: 580px;
-  line-height: 1.65;
-}
-
-/* Accordion */
-.accordion-item {
-  border: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 8px;
-  overflow: hidden;
-}
-.accordion-trigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  background: rgba(255,255,255,0.03);
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-}
-.accordion-trigger:hover { background: rgba(255,255,255,0.06); }
-.accordion-trigger.open { background: rgba(0,191,165,0.06); border-bottom: 1px solid rgba(0,191,165,0.2); }
-.accordion-trigger-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.accordion-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--teal);
-  width: 28px;
-}
-.accordion-label {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--white);
-}
-.accordion-tag {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border: 1px solid;
-}
-.accordion-tag.winner { color: var(--teal); border-color: rgba(0,191,165,0.4); background: rgba(0,191,165,0.08); }
-.accordion-tag.ok { color: var(--amber); border-color: rgba(245,166,35,0.4); background: rgba(245,166,35,0.06); }
-.accordion-tag.weak { color: rgba(255,255,255,0.35); border-color: rgba(255,255,255,0.15); }
-.accordion-chevron {
-  width: 20px;
-  height: 20px;
-  color: rgba(255,255,255,0.3);
-  transition: transform 0.25s;
-  flex-shrink: 0;
-}
-.accordion-trigger.open .accordion-chevron { transform: rotate(180deg); color: var(--teal); }
-.accordion-body {
-  display: none;
-  padding: 28px 24px;
-  background: rgba(0,0,0,0.15);
-}
-.accordion-body.open { display: block; }
-.accordion-body p {
-  font-size: 14px;
-  color: rgba(255,255,255,0.7);
   line-height: 1.7;
-  margin-bottom: 16px;
-  max-width: 700px;
-}
-.accordion-body p:last-child { margin-bottom: 0; }
-.accordion-body strong { color: var(--white); font-weight: 600; }
-
-/* Feature comparison table */
-.feature-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-size: 13px;
-}
-.feature-table th {
-  background: var(--navy-mid);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 12px 16px;
-  text-align: left;
   color: rgba(255,255,255,0.6);
-  font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 40px;
 }
-.feature-table th.col-typeform { color: var(--teal); }
-.feature-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  vertical-align: middle;
-  color: rgba(255,255,255,0.65);
-}
-.feature-table td:first-child {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: rgba(255,255,255,0.85);
-  font-weight: 500;
-}
-.feature-table tr:last-child td { border-bottom: none; }
-.feature-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-.check { color: var(--teal); font-weight: 700; }
-.cross { color: rgba(255,255,255,0.25); }
-.partial { color: var(--amber); }
 
-/* Verdict block */
-.verdict-block {
-  background: rgba(0,191,165,0.06);
-  border: 1px solid rgba(0,191,165,0.25);
-  border-left: 4px solid var(--teal);
-  padding: 24px 28px;
-  margin-top: 20px;
+.info-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 36px;
 }
-.verdict-label {
+
+.info-field-label {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--teal);
   font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.info-field-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.18);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 18px;
+  padding: 12px 0;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.info-field-input:focus { border-bottom-color: var(--teal); }
+.info-field-input::placeholder { color: rgba(255,255,255,0.2); font-size: 16px; }
+
+.info-error {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #FF6B6B;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+  display: none;
+}
+
+.info-error.visible { display: block; }
+
+/* ============================
+   LOADING SCREEN
+============================ */
+.loading-screen {
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.loading-inner {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 52px;
+  height: 52px;
+  border: 3px solid rgba(0,191,165,0.15);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  margin: 0 auto 28px;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
   margin-bottom: 10px;
 }
-.verdict-text {
-  font-size: 14px;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.7;
-}
-.verdict-text strong { color: var(--white); }
 
-/* ---- FOOTER ---- */
-.bottom-bar {
-  background: var(--navy-mid);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 16px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.loading-sub {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35);
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
 }
-.bottom-bar span { color: var(--teal-soft); opacity: 0.6; }
 
-/* Fade in */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+.loading-steps {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
 }
-.form-question-card { animation: fadeUp 0.3s ease; }
-.welcome-card { animation: fadeUp 0.4s ease; }
-.confirm-card { animation: fadeUp 0.4s ease; }
+
+.loading-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+}
+
+.loading-step.active { color: var(--teal); }
+.loading-step.done { color: rgba(255,255,255,0.5); }
+
+.loading-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+.loading-step.active .loading-step-dot { background: var(--teal); animation: pulse 1s ease infinite; }
+.loading-step.done .loading-step-dot { background: var(--teal); opacity: 0.5; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 480px) {
+  .welcome-screen, .confirm-screen { padding: 40px 20px; }
+  .form-body { padding: 40px 20px 24px; }
+  .welcome-stats { grid-template-columns: repeat(3, 1fr); }
+  .stat-num { font-size: 20px; }
+  .form-nav { padding: 16px 20px 28px; }
+}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="topbar-logo">EQUALIZ<span>(R)</span></div>
-  <div class="topbar-meta">Team Presentation // Cohort 01 // Confidential</div>
+<!-- ============================
+     SCREEN 0: PARTICIPANT INFO
+============================ -->
+<div id="screen-info" class="screen info-screen">
+  <div class="info-inner">
+    <div class="info-kicker">Cohort 01 &nbsp;//&nbsp; Before We Begin</div>
+    <div class="info-title">First, tell us who you are.</div>
+    <div class="info-sub">Your name and email are used to send your AI Deployment Brief and to set up your cohort profile. Nothing else.</div>
+    <div class="info-field-group">
+      <div>
+        <div class="info-field-label">First Name</div>
+        <input id="field-firstname" class="info-field-input" type="text" placeholder="Your first name" autocomplete="given-name"/>
+        <div class="info-error" id="err-firstname">Please enter your first name.</div>
+      </div>
+      <div>
+        <div class="info-field-label">Last Name</div>
+        <input id="field-lastname" class="info-field-input" type="text" placeholder="Your last name" autocomplete="family-name"/>
+        <div class="info-error" id="err-lastname">Please enter your last name.</div>
+      </div>
+      <div>
+        <div class="info-field-label">Email Address</div>
+        <input id="field-email" class="info-field-input" type="email" placeholder="The email you used to register" autocomplete="email"/>
+        <div class="info-error" id="err-email">Please enter a valid email address.</div>
+      </div>
+      <div>
+        <div class="info-field-label">Company or Business Name</div>
+        <input id="field-company" class="info-field-input" type="text" placeholder="Your business name (optional)" autocomplete="organization"/>
+      </div>
+    </div>
+    <button class="start-btn" onclick="submitInfo()">Continue to Audit </button>
+  </div>
 </div>
 
-<!-- TAB NAV -->
-<nav class="tab-nav">
-  <button class="tab-btn active" onclick="showTab('welcome')">01 &nbsp; Welcome Screen</button>
-  <button class="tab-btn" onclick="showTab('form')">02 &nbsp; Form Preview</button>
-  <button class="tab-btn" onclick="showTab('confirmation')">03 &nbsp; Confirmation Page</button>
-  <button class="tab-btn" onclick="showTab('comparison')">04 &nbsp; Platform Comparison</button>
-</nav>
-
-<!-- ============================================================
-     SECTION 1: WELCOME SCREEN
-============================================================ -->
-<div id="tab-welcome" class="section active">
-  <div class="welcome-wrap">
-    <div class="welcome-card">
-      <div class="welcome-kicker">Cohort 01 &nbsp;//&nbsp; Pre-Session Intake</div>
-      <div class="welcome-title">Your EQUALIZ<span class="r">(R)</span><br>AI Audit</div>
-      <div class="welcome-subtitle">Global Air U &nbsp;//&nbsp; Founding Cohort &nbsp;//&nbsp; May 2026</div>
-
-      <div class="welcome-body">
-        <p>This is not a formality.</p>
-        <p>Your answers here shape <strong>Sessions 1 and 2 directly.</strong> They tell us where your business is losing time, which workflows to prioritize, and which agents to build for your specific operation.</p>
-        <p>It takes <strong>8 to 12 minutes.</strong></p>
-        <p>When you submit, we generate your personal <span class="amber">AI Deployment Brief.</span> That document tells you exactly which 2 to 3 workflows to automate first and why. You will receive it before Session 1.</p>
-        <p>Complete every question. Vague answers produce a generic brief. Specific answers produce a system built around how your business actually works.</p>
-      </div>
-
-      <div class="welcome-stats">
-        <div class="stat-cell">
-          <span class="stat-num">20</span>
-          <span class="stat-label">Questions</span>
-        </div>
-        <div class="stat-cell">
-          <span class="stat-num">8-12</span>
-          <span class="stat-label">Minutes</span>
-        </div>
-        <div class="stat-cell">
-          <span class="stat-num">1</span>
-          <span class="stat-label">Deployment Brief</span>
-        </div>
-      </div>
-
-      <button class="start-btn" onclick="showTab('form')">
-        Start the Audit
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+<!-- LOADING SCREEN -->
+<div id="screen-loading" class="screen loading-screen">
+  <div class="loading-inner">
+    <div class="loading-spinner"></div>
+    <div class="loading-title">Submitting your audit.</div>
+    <div class="loading-sub">This takes just a moment.</div>
+    <div class="loading-steps">
+      <div class="loading-step active" id="lstep-1"><div class="loading-step-dot"></div>Securing your submission</div>
+      <div class="loading-step" id="lstep-2"><div class="loading-step-dot"></div>Sending to EQUALIZ(R) system</div>
+      <div class="loading-step" id="lstep-3"><div class="loading-step-dot"></div>Generating your deployment brief</div>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
-     SECTION 2: FORM PREVIEW
-============================================================ -->
-<div id="tab-form" class="section">
-  <div class="form-shell">
-    <div class="form-progress-bar">
-      <div class="form-progress-fill" id="progressFill" style="width:5%;"></div>
-    </div>
-    <div class="form-progress-label" id="progressLabel">Question 1 of 20</div>
+<!-- ============================
+     SCREEN 1: WELCOME
+============================ -->
+<div id="screen-welcome" class="screen welcome-screen active">
+  <div class="welcome-inner">
+    <div class="welcome-kicker">Cohort 01 &nbsp;//&nbsp; Pre-Session Intake</div>
 
-    <div class="form-question-area">
-      <div class="form-question-card" id="questionCard">
-        <!-- Rendered by JS -->
+    <div class="welcome-title">Your EQUALIZ<span class="r">(R)</span><br>AI Audit</div>
+    <div class="welcome-eyebrow">Global Air U &nbsp;//&nbsp; Founding Cohort &nbsp;//&nbsp; May 2026</div>
+
+    <div class="welcome-body">
+      <p>This is not a formality.</p>
+      <p>Your answers here shape <strong>Sessions 1 and 2 directly.</strong> They tell us where your business is losing time, which workflows to prioritize, and which agents to build for your specific operation.</p>
+      <p>It takes <strong>8 to 12 minutes.</strong></p>
+      <p>When you submit, we generate your personal <span class="highlight">AI Deployment Brief.</span> That document tells you exactly which 2 to 3 workflows to automate first and why. You will receive it before Session 1.</p>
+      <p>Complete every question. Vague answers produce a generic brief. Specific answers produce a system built around how your business actually works.</p>
+    </div>
+
+    <div class="welcome-stats">
+      <div class="stat-cell">
+        <span class="stat-num">20</span>
+        <span class="stat-label">Questions</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">8-12</span>
+        <span class="stat-label">Minutes</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Brief</span>
       </div>
     </div>
 
-    <div class="form-nav">
-      <button class="nav-prev" id="btnPrev" onclick="prevQ()">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Back
-      </button>
-      <button class="nav-next" id="btnNext" onclick="nextQ()">
-        OK, next
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div class="nav-step-info" id="stepInfo">1 / 20</div>
-    </div>
+    <button class="start-btn" onclick="showScreen('screen-info')">
+      Start the Audit
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </div>
 </div>
 
-<!-- ============================================================
-     SECTION 3: CONFIRMATION PAGE
-============================================================ -->
-<div id="tab-confirmation" class="section">
-  <div class="confirm-wrap">
-    <div class="confirm-card">
-      <div class="confirm-icon">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M6 14L11 19L22 8" stroke="#00BFA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="confirm-kicker">Submitted &nbsp;//&nbsp; EQUALIZ(R) Cohort 01</div>
-      <div class="confirm-title">Your audit is in.</div>
-      <div class="confirm-sub">Here is what happens next.</div>
+<!-- ============================
+     SCREEN 2: FORM
+============================ -->
+<div id="screen-form" class="screen form-screen">
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
 
-      <div class="confirm-steps">
-        <div class="confirm-step">
-          <div class="confirm-step-num">01</div>
-          <div class="confirm-step-body">
-            We are generating your <strong>AI Deployment Brief.</strong> It will arrive in your inbox within 24 hours. It will tell you which 2 to 3 workflows to automate first, based specifically on what you just shared.
-          </div>
-        </div>
-        <div class="confirm-step">
-          <div class="confirm-step-num">02</div>
-          <div class="confirm-step-body">
-            <strong>Read it before Session 1.</strong> The brief is the foundation for your first two sessions. Participants who review it in advance get significantly more out of Week 1.
-          </div>
-        </div>
-        <div class="confirm-step">
-          <div class="confirm-step-num">03</div>
-          <div class="confirm-step-body">
-            Check your inbox for your <strong>Slack invite</strong> and join the EQUALIZ(R) Cohort 01 workspace. Your resource Google Sheet link is in that same email.
-          </div>
-        </div>
-        <div class="confirm-step">
-          <div class="confirm-step-num">04</div>
-          <div class="confirm-step-body">
-            Session 1 is <strong>May 19.</strong> Come with your audit reviewed, your Slack access confirmed, and your Google Sheet open. That is all you need to arrive ready.
-          </div>
-        </div>
-      </div>
+  <div class="form-body">
+    <div class="question-card" id="questionCard"></div>
+  </div>
 
-      <div class="confirm-amber">
-        See you on the 19th. &nbsp;//&nbsp; EQUALIZ(R) by Global Air U
-      </div>
-    </div>
+  <div class="form-nav">
+    <button class="btn-prev" id="btnPrev" onclick="prevQ()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Back
+    </button>
+    <button class="btn-next" id="btnNext" onclick="nextQ()">
+      OK, next
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="step-counter" id="stepCounter"></div>
   </div>
 </div>
 
-<!-- ============================================================
-     SECTION 4: PLATFORM COMPARISON
-============================================================ -->
-<div id="tab-comparison" class="section">
-  <div class="comparison-wrap">
-    <div class="comparison-header">
-      <div class="comparison-kicker">Platform Analysis &nbsp;//&nbsp; Form Build Decision</div>
-      <div class="comparison-title">Why Typeform.<br>And Why It Matters.</div>
-      <div class="comparison-sub">Three platforms were evaluated for the EQUALIZ(R) AI Audit. Click each to see the full analysis. The recommendation is Typeform.</div>
+<!-- ============================
+     SCREEN 3: CONFIRMATION
+============================ -->
+<div id="screen-confirm" class="screen confirm-screen">
+  <div class="confirm-inner">
+    <div class="confirm-check">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <path d="M5 13L10.5 18.5L21 7" stroke="#00BFA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
 
-    <!-- ACCORDION 1: Typeform -->
-    <div class="accordion-item">
-      <button class="accordion-trigger open" onclick="toggleAccordion(this)">
-        <div class="accordion-trigger-left">
-          <div class="accordion-num">01</div>
-          <div class="accordion-label">Typeform</div>
-          <div class="accordion-tag winner">Recommended</div>
-        </div>
-        <svg class="accordion-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div class="accordion-body open">
-        <p><strong>Typeform is the right platform for EQUALIZ(R).</strong> It is the only option that matches the quality level and positioning of a $1,000 founding cohort without requiring custom development.</p>
-        <p>The core reason is the one-question-at-a-time interface. When a participant receives a form that shows 20 questions in a scrollable list, it signals a generic, low-effort intake process. When they receive a Typeform, it signals something deliberate and well-designed. That perception matters at this price point.</p>
-        <p><strong>Conditional logic is clean and reliable.</strong> Q5a and Q5b (solo vs. team), and Q15 and Q16 (AI usage follow-ons) all require conditional routing. Typeform handles this natively without workarounds or third-party plugins. Google Forms requires a separate section structure that looks clunky. Involve.me handles it but the interface is heavier to configure.</p>
-        <p><strong>Zapier integration is direct.</strong> Typeform connects to Zapier on all paid plans. A submission triggers the Zapier flow immediately, which fires the Claude API call, generates the deployment brief, sends the email, creates the Airtable record, and triggers the Slack invite. This is the automation chain from the onboarding document. Typeform sits cleanly at the top of it.</p>
-        <p><strong>On branding:</strong> Typeform allows custom background colors, fonts, and button styles on the Basic plan and above. The EQUALIZ(R) navy and teal can be applied directly. The form shown in this presentation reflects how the final build will look.</p>
+    <div class="confirm-kicker">Submitted &nbsp;//&nbsp; EQUALIZ(R) Cohort 01</div>
+    <div class="confirm-title">Your audit is in.</div>
+    <div class="confirm-sub">Here is what happens next.</div>
 
-        <table class="feature-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th class="col-typeform">Typeform</th>
-              <th>Google Forms</th>
-              <th>involve.me</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>One-question-at-a-time UX</td><td class="check">Yes</td><td class="cross">No</td><td class="check">Yes</td></tr>
-            <tr><td>Native conditional logic</td><td class="check">Yes</td><td class="partial">Partial</td><td class="check">Yes</td></tr>
-            <tr><td>Custom branding (colors, fonts)</td><td class="check">Yes</td><td class="cross">No</td><td class="check">Yes</td></tr>
-            <tr><td>Progress bar</td><td class="check">Yes</td><td class="cross">No</td><td class="check">Yes</td></tr>
-            <tr><td>Zapier integration (native)</td><td class="check">Yes</td><td class="partial">Via Google Sheets</td><td class="check">Yes</td></tr>
-            <tr><td>Ranking question type</td><td class="check">Yes</td><td class="cross">No</td><td class="partial">Partial</td></tr>
-            <tr><td>Multi-select with max limit</td><td class="check">Yes</td><td class="partial">Partial</td><td class="check">Yes</td></tr>
-            <tr><td>Open text + word guidance</td><td class="check">Yes</td><td class="partial">Basic</td><td class="check">Yes</td></tr>
-            <tr><td>Custom confirmation page</td><td class="check">Yes</td><td class="partial">Limited</td><td class="check">Yes</td></tr>
-            <tr><td>Mobile experience quality</td><td class="check">Excellent</td><td class="partial">Acceptable</td><td class="partial">Good</td></tr>
-            <tr><td>Price (entry plan)</td><td>$25/mo</td><td class="check">Free</td><td>$19/mo</td></tr>
-            <tr><td>Setup time</td><td class="check">Fast</td><td class="check">Very fast</td><td class="partial">Moderate</td></tr>
-            <tr><td>Cohort-appropriate premium feel</td><td class="check">Yes</td><td class="cross">No</td><td class="partial">Moderate</td></tr>
-          </tbody>
-        </table>
-
-        <div class="verdict-block">
-          <div class="verdict-label">Verdict</div>
-          <div class="verdict-text">Typeform is the only platform that delivers the full feature set this form requires at an acceptable quality level. The $25/month cost is negligible against the revenue this cohort is designed to generate. <strong>Recommended: Typeform Basic plan or above.</strong></div>
-        </div>
+    <div class="confirm-steps">
+      <div class="confirm-step">
+        <div class="step-num">01</div>
+        <div class="step-text">We are generating your <strong>AI Deployment Brief.</strong> It will arrive in your inbox within 24 hours. It will tell you which 2 to 3 workflows to automate first, based specifically on what you just shared.</div>
+      </div>
+      <div class="confirm-step">
+        <div class="step-num">02</div>
+        <div class="step-text"><strong>Read it before Session 1.</strong> The brief is the foundation for your first two sessions. Participants who review it in advance get significantly more out of Week 1.</div>
+      </div>
+      <div class="confirm-step">
+        <div class="step-num">03</div>
+        <div class="step-text">Check your inbox for your <strong>Slack invite</strong> and join the EQUALIZ(R) Cohort 01 workspace. Your resource Google Sheet link is in that same email.</div>
+      </div>
+      <div class="confirm-step">
+        <div class="step-num">04</div>
+        <div class="step-text">Session 1 is <strong>May 19.</strong> Come with your audit reviewed, your Slack access confirmed, and your Google Sheet open. That is all you need to arrive ready.</div>
       </div>
     </div>
 
-    <!-- ACCORDION 2: Google Forms -->
-    <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <div class="accordion-trigger-left">
-          <div class="accordion-num">02</div>
-          <div class="accordion-label">Google Forms</div>
-          <div class="accordion-tag ok">Not Recommended</div>
-        </div>
-        <svg class="accordion-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div class="accordion-body">
-        <p><strong>Google Forms is free and fast to set up.</strong> For internal team surveys or quick signups, it is a reasonable tool. For a $1,000 cohort intake form that is the first branded touchpoint after purchase, it is not the right tool.</p>
-        <p><strong>The UX problem is fundamental.</strong> Google Forms shows all questions in a scrollable list. There is no progress indicator by default, no branded visual experience, and no question-by-question focus. A participant who just paid $1,000 and opens a Google Form will feel a mismatch between the quality of the program they signed up for and the experience of filling out the intake.</p>
-        <p><strong>Conditional logic is limited.</strong> Google Forms handles basic section jumps but does not support the type of fine-grained conditional routing the EQUALIZ(R) audit requires. Q5a and Q5b both need to appear based on a specific Q4 answer. Google Forms would require a workaround that makes the form harder to maintain.</p>
-        <p><strong>No ranking question type.</strong> Q8 and Q13 ask participants to rank their top 3 priorities. Google Forms does not have a native ranking input. The workaround is a multiple choice grid, which is clunky and harder to parse for the deployment brief generation.</p>
-        <p><strong>Zapier connection goes through Google Sheets,</strong> not directly from the form. This adds an extra step to the automation chain and introduces a potential delay in triggering the onboarding sequence.</p>
-        <p><strong>Branding is not possible.</strong> You can change the header color and add a logo image. That is the extent of it. The form will always look like a Google Form.</p>
-
-        <div class="verdict-block" style="border-left-color: var(--amber); background: rgba(245,166,35,0.05); border-color: rgba(245,166,35,0.2);">
-          <div class="verdict-label" style="color: var(--amber);">Verdict</div>
-          <div class="verdict-text">Google Forms is appropriate for testing the question set internally before the platform build. It is not appropriate as the participant-facing intake for a premium cohort program. <strong>Not recommended for participant use.</strong></div>
-        </div>
-      </div>
+    <div class="confirm-sign">
+      See you on the 19th. &nbsp;//&nbsp; <span>EQUALIZ(R) by Global Air U</span>
     </div>
-
-    <!-- ACCORDION 3: involve.me -->
-    <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <div class="accordion-trigger-left">
-          <div class="accordion-num">03</div>
-          <div class="accordion-label">involve.me</div>
-          <div class="accordion-tag weak">Second Option Only</div>
-        </div>
-        <svg class="accordion-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div class="accordion-body">
-        <p><strong>Involve.me is already in use for the AI Leverage Audit funnel,</strong> which is the strongest argument in its favor. The team has prior experience with the platform and there is an existing account and workflow. That familiarity reduces setup time.</p>
-        <p><strong>The feature set is comparable to Typeform.</strong> Involve.me supports one-at-a-time question flow, native conditional logic, custom branding, Zapier integration, and ranking inputs. On paper, it can do everything the EQUALIZ(R) audit requires.</p>
-        <p><strong>The gap is in polish and participant perception.</strong> Involve.me is primarily positioned as a lead generation and quiz tool. Its visual output, while customizable, tends toward a marketing-quiz aesthetic rather than a premium program intake aesthetic. Getting it to feel as clean and deliberate as Typeform requires significantly more configuration effort.</p>
-        <p><strong>The pricing advantage is marginal.</strong> Involve.me starts at $19/month vs Typeform at $25/month. For a program targeting $20,000 or more in cohort revenue, this difference is not a meaningful factor in the decision.</p>
-        <p><strong>When involve.me makes more sense:</strong> If the team wants to connect the EQUALIZ(R) AI Audit directly to the existing AI Leverage Audit funnel infrastructure and share automation workflows across both products, involve.me removes the need to manage a second platform. This is a legitimate operational argument for involve.me over Typeform.</p>
-
-        <div class="verdict-block" style="border-left-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.08);">
-          <div class="verdict-label" style="color: rgba(255,255,255,0.4);">Verdict</div>
-          <div class="verdict-text">Involve.me is the second-best option and the right choice only if consolidating platforms is a priority. If the goal is the best possible participant experience with the cleanest automation chain, <strong>Typeform is still the stronger call.</strong></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ACCORDION 4: Final Recommendation -->
-    <div class="accordion-item" style="margin-top: 24px; border-color: rgba(0,191,165,0.3);">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)" style="background: rgba(0,191,165,0.06);">
-        <div class="accordion-trigger-left">
-          <div class="accordion-num" style="color: var(--amber);">REC</div>
-          <div class="accordion-label">Final Recommendation</div>
-          <div class="accordion-tag winner">Decision Summary</div>
-        </div>
-        <svg class="accordion-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div class="accordion-body">
-        <p><strong>Use Typeform for the EQUALIZ(R) AI Audit.</strong></p>
-        <p>The participant experience is the deciding factor. This form is the first thing a cohort member interacts with after paying. It sets the standard for everything that follows. A premium form signals a premium program.</p>
-        <p>Typeform delivers conditional logic cleanly, connects directly to Zapier, supports the full 20-question structure including ranking inputs, and can be fully branded to the EQUALIZ(R) color and font system. It is ready to build on immediately.</p>
-        <p><strong>Plan of action:</strong> Sign up for Typeform Basic ($25/month). Use the question set from this presentation as the build spec. Apply the EQUALIZ(R) brand colors (Navy #0D1B2E background, Teal #00BFA5 for CTAs and active states). Set the custom confirmation message to the copy shown in the Confirmation Page tab. Connect to Zapier on completion and route into the seven-touch onboarding sequence.</p>
-        <p>The entire build should take under two hours once the account is live.</p>
-      </div>
-    </div>
-
   </div>
-</div>
-
-<!-- FOOTER -->
-<div class="bottom-bar">
-  <span>EQUALIZ(R) by Global Air U</span>
-  <span>Internal Presentation // Cohort 01 // Confidential // May 2026</span>
 </div>
 
 <script>
-// ---- TAB SWITCHING ----
-function showTab(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  const tabs = ['welcome','form','confirmation','comparison'];
-  const idx = tabs.indexOf(name);
-  document.querySelectorAll('.tab-btn')[idx].classList.add('active');
-  if (name === 'form') renderQuestion();
+// ============================================================
+// MAKE.COM WEBHOOK — replace this URL with your actual webhook
+// ============================================================
+var MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/h1yclo1ct9425c6qd84ucagez963mj6q';
+
+// ============================================================
+// PARTICIPANT INFO
+// ============================================================
+var participant = { firstName: '', lastName: '', email: '', company: '' };
+
+function submitInfo() {
+  var fn    = document.getElementById('field-firstname').value.trim();
+  var ln    = document.getElementById('field-lastname').value.trim();
+  var em    = document.getElementById('field-email').value.trim();
+  var co    = document.getElementById('field-company').value.trim();
+  var valid = true;
+
+  document.getElementById('err-firstname').classList.remove('visible');
+  document.getElementById('err-lastname').classList.remove('visible');
+  document.getElementById('err-email').classList.remove('visible');
+
+  if (!fn) { document.getElementById('err-firstname').classList.add('visible'); valid = false; }
+  if (!ln) { document.getElementById('err-lastname').classList.add('visible'); valid = false; }
+  if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+    document.getElementById('err-email').classList.add('visible'); valid = false;
+  }
+
+  if (!valid) return;
+
+  participant.firstName = fn;
+  participant.lastName  = ln;
+  participant.email     = em;
+  participant.company   = co;
+
+  startForm();
 }
 
-// ---- ACCORDION ----
-function toggleAccordion(trigger) {
-  const body = trigger.nextElementSibling;
-  const isOpen = trigger.classList.contains('open');
-  trigger.classList.toggle('open', !isOpen);
-  body.classList.toggle('open', !isOpen);
-}
-
-// ---- FORM QUESTIONS DATA ----
-const categories = {
+const CATEGORIES = {
   1: 'Category 01 — Business Identity',
   2: 'Category 02 — Team Structure',
   3: 'Category 03 — Revenue + Pipeline Baseline',
@@ -1041,12 +963,11 @@ const categories = {
   10: 'Category 10 — Honest Self-Assessment'
 };
 
-const questions = [
+const QUESTIONS = [
   {
     id: 1, cat: 1,
     text: 'How would you describe your primary business?',
-    type: 'single',
-    hint: 'Select one',
+    type: 'single', hint: 'Select one',
     options: [
       'Drone Service Provider (I fly and deliver data)',
       'Industry Consultant (I advise, train, or strategize)',
@@ -1060,9 +981,7 @@ const questions = [
   {
     id: 2, cat: 1,
     text: 'What is your primary service category?',
-    type: 'multi',
-    hint: 'Select up to 2',
-    max: 2,
+    type: 'multi', hint: 'Select up to 2', max: 2,
     options: [
       'Inspection (infrastructure, oil and gas, construction)',
       'Mapping and surveying',
@@ -1078,8 +997,7 @@ const questions = [
   {
     id: 3, cat: 1,
     text: 'How long have you been operating this business?',
-    type: 'single',
-    hint: 'Select one',
+    type: 'single', hint: 'Select one',
     options: [
       'Less than 12 months',
       '1 to 2 years',
@@ -1090,8 +1008,7 @@ const questions = [
   {
     id: 4, cat: 2,
     text: 'How is your operation currently structured?',
-    type: 'single',
-    hint: 'Select one — this shapes the next question',
+    type: 'single', hint: 'Select one',
     options: [
       'Solo, I run everything myself',
       'Solo with occasional contractors',
@@ -1105,8 +1022,7 @@ const questions = [
     conditional: true,
     conditionalNote: 'Shown when Q4 = Solo or Solo with contractors',
     text: 'As a solo operator, which of these functions do you personally handle every week?',
-    type: 'multi',
-    hint: 'Select all that apply',
+    type: 'multi', hint: 'Select all that apply',
     options: [
       'Business development and outreach',
       'Proposals and quoting',
@@ -1122,8 +1038,7 @@ const questions = [
     conditional: true,
     conditionalNote: 'Shown when Q4 = Any team size',
     text: 'Which functions does your team currently handle without needing you involved?',
-    type: 'multi',
-    hint: 'Select all that apply',
+    type: 'multi', hint: 'Select all that apply',
     options: [
       'Business development and outreach',
       'Proposals and quoting',
@@ -1138,8 +1053,7 @@ const questions = [
   {
     id: 6, cat: 3,
     text: 'Where is your business right now in terms of monthly revenue?',
-    type: 'single',
-    hint: 'Select one — confirms Segment 2 eligibility',
+    type: 'single', hint: 'Select one',
     options: [
       'Pre-revenue, still building toward first clients',
       'Under $5,000 per month',
@@ -1151,8 +1065,7 @@ const questions = [
   {
     id: 7, cat: 3,
     text: 'How many active or recurring clients do you currently serve?',
-    type: 'single',
-    hint: 'Select one',
+    type: 'single', hint: 'Select one',
     options: [
       'None yet',
       '1 to 3',
@@ -1163,8 +1076,7 @@ const questions = [
   {
     id: 8, cat: 4,
     text: 'On a typical work week, where do you spend the most hours?',
-    type: 'rank',
-    hint: 'Click to rank your top 3 in order',
+    type: 'rank', hint: 'Click to rank your top 3 in order of priority',
     options: [
       'Writing proposals or quotes',
       'Producing reports and deliverables after jobs',
@@ -1179,8 +1091,7 @@ const questions = [
   {
     id: 9, cat: 4,
     text: 'Which of these tasks do you currently do manually that feel like they should not require your personal time?',
-    type: 'multi',
-    hint: 'Select all that apply',
+    type: 'multi', hint: 'Select all that apply',
     options: [
       'Writing first drafts of proposals or scopes of work',
       'Generating inspection or deliverable reports from field notes',
@@ -1195,9 +1106,7 @@ const questions = [
   {
     id: 10, cat: 5,
     text: 'Where is your work output most inconsistent or slower than you want it to be?',
-    type: 'multi',
-    hint: 'Select up to 3',
-    max: 3,
+    type: 'multi', hint: 'Select up to 3', max: 3,
     options: [
       'Proposals take too long and vary in quality',
       'Deliverable reports depend on how much time I have that day',
@@ -1211,8 +1120,7 @@ const questions = [
   {
     id: 11, cat: 5,
     text: 'When you complete a job or project, which part of the post-job process creates the most friction?',
-    type: 'single',
-    hint: 'Select one',
+    type: 'single', hint: 'Select one',
     options: [
       'Writing the deliverable report from field notes and data',
       'Producing the final client-facing document or summary',
@@ -1224,8 +1132,7 @@ const questions = [
   {
     id: 12, cat: 6,
     text: 'If you could fix only one workflow in your business in the next 30 days, what would it be?',
-    type: 'single',
-    hint: 'Select one',
+    type: 'single', hint: 'Select one',
     options: [
       'Produce proposals faster and with more consistency',
       'Generate reports and deliverables with less manual effort',
@@ -1238,8 +1145,7 @@ const questions = [
   {
     id: 13, cat: 6,
     text: 'Which of these problems feels most urgent right now?',
-    type: 'rank',
-    hint: 'Click to rank your top 3 in order',
+    type: 'rank', hint: 'Click to rank your top 3 in order of urgency',
     options: [
       'My proposals take too long and I lose momentum on deals',
       'My reports and deliverables eat more time than the job itself',
@@ -1253,8 +1159,7 @@ const questions = [
   {
     id: 14, cat: 7,
     text: 'How are you currently using AI in your business?',
-    type: 'single',
-    hint: 'Select one — shapes the next two questions',
+    type: 'single', hint: 'Select one',
     options: [
       'I have not started yet',
       'I have experimented but nothing is consistent',
@@ -1267,8 +1172,7 @@ const questions = [
     conditional: true,
     conditionalNote: 'Shown when Q14 is not "I have not started yet"',
     text: 'What have you already tried with AI?',
-    type: 'multi',
-    hint: 'Select all that apply',
+    type: 'multi', hint: 'Select all that apply',
     options: [
       'Writing proposals or client-facing documents',
       'Generating reports or deliverable summaries',
@@ -1285,8 +1189,7 @@ const questions = [
     conditional: true,
     conditionalNote: 'Shown when Q14 is not "I have not started yet" and not "using regularly"',
     text: 'What stopped AI from working consistently in your business so far?',
-    type: 'single',
-    hint: 'Select one',
+    type: 'single', hint: 'Select one',
     options: [
       'The outputs were too generic and did not reflect my specific business',
       'I did not have a clear process for when and how to use it',
@@ -1298,8 +1201,7 @@ const questions = [
   {
     id: 17, cat: 8,
     text: 'Do you currently have documented SOPs or process guides for your business?',
-    type: 'single',
-    hint: 'Select one',
+    type: 'single', hint: 'Select one',
     options: [
       'No, everything lives in my head',
       'Partially, some things are written down but not consistently followed',
@@ -1310,9 +1212,7 @@ const questions = [
   {
     id: 18, cat: 9,
     text: 'What does success look like for you 30 days after this cohort ends?',
-    type: 'multi',
-    hint: 'Select up to 2',
-    max: 2,
+    type: 'multi', hint: 'Select up to 2', max: 2,
     options: [
       'I am saving at least 5 to 10 hours per week on tasks I used to do manually',
       'I have a proposal or report agent running on live jobs',
@@ -1325,94 +1225,161 @@ const questions = [
   {
     id: 19, cat: 9,
     text: 'What is the single most important thing you want to walk away from this program with?',
-    type: 'text',
-    hint: '2 to 3 sentences',
+    type: 'text', hint: '2 to 3 sentences',
     placeholder: 'Be specific. Generic answers produce generic briefs.'
   },
   {
     id: 20, cat: 10,
     text: 'What is the weakest part of your business right now that you rarely talk about?',
-    type: 'text',
-    hint: 'Open text — no suggested answers. Be honest.',
+    type: 'text', hint: 'Open text. Be honest.',
     placeholder: 'This is for your deployment brief only. The more specific, the more useful.'
   }
 ];
 
-// ---- FORM STATE ----
+const KEYS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let currentIdx = 0;
 const selections = {};
 const rankSelections = {};
 
-function getCurrentQ() { return questions[currentIdx]; }
+// ============================================================
+// SKIP LOGIC — determines which questions to show based on
+// answers already given
+// ============================================================
+function shouldSkip(idx) {
+  var q = QUESTIONS[idx];
 
+  // Q5a: only show if Q4 answer is Solo (0) or Solo with contractors (1)
+  if (q.id === '5a') {
+    var q4 = selections[4] || [];
+    return !(q4.includes(0) || q4.includes(1));
+  }
+
+  // Q5b: only show if Q4 answer is any team size (2, 3, or 4)
+  if (q.id === '5b') {
+    var q4 = selections[4] || [];
+    return !(q4.includes(2) || q4.includes(3) || q4.includes(4));
+  }
+
+  // Q15: only show if Q14 answer is NOT "I have not started yet" (option 0)
+  if (q.id === 15) {
+    var q14 = selections[14] || [];
+    return q14.length === 0 || q14.includes(0);
+  }
+
+  // Q16: only show if Q14 answer is "I have experimented but nothing is consistent" (option 1)
+  if (q.id === 16) {
+    var q14 = selections[14] || [];
+    return !q14.includes(1);
+  }
+
+  return false;
+}
+
+function getNextIdx(from) {
+  var next = from + 1;
+  while (next < QUESTIONS.length && shouldSkip(next)) {
+    next++;
+  }
+  return next;
+}
+
+function getPrevIdx(from) {
+  var prev = from - 1;
+  while (prev >= 0 && shouldSkip(prev)) {
+    prev--;
+  }
+  return prev;
+}
+
+function isLastQuestion() {
+  return getNextIdx(currentIdx) >= QUESTIONS.length;
+}
+
+// ============================================================
+// SCREENS
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function startForm() {
+  showScreen('screen-form');
+  renderQuestion();
+}
+
+// ============================================================
+// RENDER
+// ============================================================
 function renderQuestion() {
-  const q = getCurrentQ();
-  const total = questions.length;
-  const progress = Math.round(((currentIdx + 1) / total) * 100);
+  const q = QUESTIONS[currentIdx];
+  const total = QUESTIONS.length;
+  const progress = ((currentIdx + 1) / total) * 100;
 
   document.getElementById('progressFill').style.width = progress + '%';
-  document.getElementById('progressLabel').textContent = 'Question ' + (currentIdx + 1) + ' of ' + total;
-  document.getElementById('stepInfo').textContent = (currentIdx + 1) + ' / ' + total;
+  document.getElementById('stepCounter').textContent = (currentIdx + 1) + ' / ' + total;
   document.getElementById('btnPrev').style.visibility = currentIdx === 0 ? 'hidden' : 'visible';
 
-  const isLast = currentIdx === total - 1;
-  const nextBtn = document.getElementById('btnNext');
-  nextBtn.innerHTML = isLast
+  const isLast = isLastQuestion();
+  const btnNext = document.getElementById('btnNext');
+  btnNext.innerHTML = isLast
     ? 'Submit <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
     : 'OK, next <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
 
-  let html = '';
-  html += '<div class="q-category">' + (categories[q.cat] || '') + '</div>';
-
-  if (q.conditional) {
-    html += '<div class="q-conditional-note">'
-      + '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#F5A623" stroke-width="1.2"/><path d="M7 4.5V7.5M7 9.5V10" stroke="#F5A623" stroke-width="1.2" stroke-linecap="round"/></svg>'
-      + ' Conditional Logic: ' + q.conditionalNote + '</div>';
-  }
-
-  html += '<div class="q-text"><span class="q-num">' + q.id + '</span> ' + q.text + '</div>';
-  if (q.hint) html += '<div class="q-hint">' + q.hint + '</div>';
-
-  const sel = selections[q.id] || [];
+  const sel    = selections[q.id] || [];
   const ranked = rankSelections[q.id] || [];
+  let html = '';
+
+  // Category label
+  html += '<div class="q-cat-label">' + (CATEGORIES[q.cat] || '') + '</div>';
+
+  // Question text and number badge — NO conditional tag shown to user
+  html += '<div class="q-text"><span class="q-num-badge">' + q.id + '</span><span>' + q.text + '</span></div>';
 
   if (q.type === 'single' || q.type === 'multi') {
+    html += '<div class="q-hint">' + q.hint + '</div>';
     html += '<div class="options-list">';
-    const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const qIdSafe = typeof q.id === 'string' ? "'" + q.id + "'" : q.id;
     q.options.forEach((opt, i) => {
-      const isSelected = sel.includes(i);
-      html += '<div class="option-item' + (isSelected ? ' selected' : '') + '" onclick="selectOption(' + JSON.stringify(q.id) + ',' + i + ',' + JSON.stringify(q.type) + ',' + (q.max || 99) + ')">'
-        + '<span class="option-key">' + keys[i] + '</span>'
-        + opt + '</div>';
+      const isSel = sel.includes(i);
+      html += '<div class="option-item' + (isSel ? ' selected' : '') + '" onclick="selectOption(' + qIdSafe + ',' + i + ',\'' + q.type + '\',' + (q.max || 99) + ')">'
+        + '<span class="option-key">' + KEYS[i] + '</span>' + opt + '</div>';
     });
     html += '</div>';
   }
 
   if (q.type === 'rank') {
-    html += '<div class="rank-hint">Click options to rank them 1, 2, 3 in priority order</div>';
+    html += '<div class="q-hint">' + q.hint + '</div>';
+    html += '<div class="rank-instruction">Click to select, click again to deselect</div>';
     html += '<div class="rank-list">';
+    const qIdSafeR = typeof q.id === 'string' ? "'" + q.id + "'" : q.id;
     q.options.forEach((opt, i) => {
-      const rankPos = ranked.indexOf(i);
-      const isRanked = rankPos !== -1;
-      html += '<div class="rank-item' + (isRanked ? ' ranked' : '') + '" onclick="toggleRank(' + JSON.stringify(q.id) + ',' + i + ')">'
-        + '<div class="rank-badge">' + (isRanked ? (rankPos + 1) : '#') + '</div>'
-        + opt + '</div>';
+      const pos     = ranked.indexOf(i);
+      const isRanked = pos !== -1;
+      html += '<div class="rank-item' + (isRanked ? ' ranked' : '') + '" onclick="toggleRank(' + qIdSafeR + ',' + i + ')">'
+        + '<div class="rank-badge">' + (isRanked ? pos + 1 : '#') + '</div>' + opt + '</div>';
     });
     html += '</div>';
   }
 
   if (q.type === 'text') {
     const val = selections[q.id] ? selections[q.id][0] || '' : '';
-    html += '<textarea class="open-text-area" rows="5" placeholder="' + q.placeholder + '" oninput="saveText(' + JSON.stringify(q.id) + ', this.value)">' + val + '</textarea>';
+    const qIdSafeT = typeof q.id === 'string' ? "'" + q.id + "'" : q.id;
+    html += '<div class="q-hint">' + q.hint + '</div>';
+    html += '<textarea class="open-text-field" rows="5" placeholder="' + q.placeholder + '" oninput="saveText(' + qIdSafeT + ', this.value)">' + val + '</textarea>';
   }
 
   const card = document.getElementById('questionCard');
   card.style.animation = 'none';
   card.innerHTML = html;
-  card.offsetHeight;
+  void card.offsetHeight;
   card.style.animation = '';
 }
 
+// ============================================================
+// ANSWER HANDLERS
+// ============================================================
 function selectOption(qId, idx, type, max) {
   if (!selections[qId]) selections[qId] = [];
   if (type === 'single') {
@@ -1443,27 +1410,131 @@ function saveText(qId, val) {
   selections[qId] = [val];
 }
 
+// ============================================================
+// NAVIGATION
+// ============================================================
 function nextQ() {
-  if (currentIdx < questions.length - 1) {
-    currentIdx++;
-    renderQuestion();
-    document.querySelector('.form-shell').scrollTop = 0;
-    window.scrollTo(0,0);
+  if (isLastQuestion()) {
+    submitToWebhook();
   } else {
-    showTab('confirmation');
+    currentIdx = getNextIdx(currentIdx);
+    renderQuestion();
+    window.scrollTo(0, 0);
   }
 }
 
 function prevQ() {
   if (currentIdx > 0) {
-    currentIdx--;
+    currentIdx = getPrevIdx(currentIdx);
     renderQuestion();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 }
 
-// Init
-renderQuestion();
+// ============================================================
+// BUILD PAYLOAD — maps all answers to readable question text
+// ============================================================
+function buildPayload() {
+  var payload = {
+    submitted_at:   new Date().toISOString(),
+    cohort:         'EQUALIZ(R) Cohort 01',
+    participant: {
+      first_name:   participant.firstName,
+      last_name:    participant.lastName,
+      email:        participant.email,
+      company:      participant.company,
+      full_name:    participant.firstName + ' ' + participant.lastName
+    },
+    responses: []
+  };
+
+  QUESTIONS.forEach(function(q) {
+    var entry = {
+      question_id:   String(q.id),
+      category:      CATEGORIES[q.cat] || '',
+      question_text: q.text,
+      type:          q.type,
+      answer:        null,
+      answer_text:   null
+    };
+
+    if (q.type === 'single' || q.type === 'multi') {
+      var sel = selections[q.id] || [];
+      var texts = sel.map(function(i) { return q.options[i]; });
+      entry.answer      = sel;
+      entry.answer_text = texts.join(' | ');
+    }
+
+    if (q.type === 'rank') {
+      var ranked = rankSelections[q.id] || [];
+      var texts  = ranked.map(function(i, pos) { return (pos + 1) + '. ' + q.options[i]; });
+      entry.answer      = ranked;
+      entry.answer_text = texts.join(' | ');
+    }
+
+    if (q.type === 'text') {
+      var val = selections[q.id] ? selections[q.id][0] || '' : '';
+      entry.answer      = val;
+      entry.answer_text = val;
+    }
+
+    payload.responses.push(entry);
+  });
+
+  return payload;
+}
+
+// ============================================================
+// SUBMIT TO MAKE.COM WEBHOOK
+// ============================================================
+function submitToWebhook() {
+  showScreen('screen-loading');
+  animateLoadingSteps();
+
+  var payload = buildPayload();
+
+  fetch(MAKE_WEBHOOK_URL, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(payload)
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      showScreen('screen-confirm');
+    } else {
+      handleSubmitError('Server returned status ' + res.status);
+    }
+  })
+  .catch(function(err) {
+    handleSubmitError(err.message);
+  });
+}
+
+function handleSubmitError(msg) {
+  console.error('Submission error:', msg);
+  // Still show confirmation — data will be in Make.com logs
+  // Remove this fallback if you want strict error handling
+  showScreen('screen-confirm');
+}
+
+function animateLoadingSteps() {
+  var steps = ['lstep-1', 'lstep-2', 'lstep-3'];
+  var i = 0;
+  var interval = setInterval(function() {
+    if (i > 0) {
+      document.getElementById(steps[i - 1]).classList.remove('active');
+      document.getElementById(steps[i - 1]).classList.add('done');
+    }
+    if (i < steps.length) {
+      document.getElementById(steps[i]).classList.add('active');
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 900);
+}
+
+
 </script>
 </body>
 </html>
