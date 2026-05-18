@@ -180,7 +180,7 @@ html, body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 56px 24px 32px;
+  padding: 28px 24px 16px;
   overflow-y: auto;
 }
 
@@ -221,7 +221,7 @@ html, body {
 
 .q-text {
   font-family: var(--font-display);
-  font-size: clamp(22px, 4vw, 30px);
+  font-size: clamp(18px, 3.2vw, 24px);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -262,20 +262,20 @@ html, body {
 .options-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 36px;
+  gap: 6px;
+  margin-bottom: 24px;
 }
 
 .option-item {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 18px;
+  padding: 11px 16px;
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(255,255,255,0.02);
   cursor: pointer;
   transition: all 0.14s;
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(255,255,255,0.75);
   user-select: none;
   -webkit-user-select: none;
@@ -333,19 +333,19 @@ html, body {
 .rank-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 36px;
+  gap: 6px;
+  margin-bottom: 24px;
 }
 
 .rank-item {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 13px 16px;
+  padding: 10px 14px;
   border: 1px solid rgba(255,255,255,0.09);
   background: rgba(255,255,255,0.02);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255,255,255,0.65);
   transition: all 0.14s;
   user-select: none;
@@ -405,15 +405,20 @@ html, body {
 .open-text-field:focus { border-bottom-color: var(--teal); }
 .open-text-field::placeholder { color: rgba(255,255,255,0.2); }
 
-/* Form nav */
+/* Form nav - shared styles for top and bottom */
 .form-nav {
   display: flex;
   align-items: center;
-  padding: 20px 24px 36px;
+  padding: 12px 24px;
   max-width: 688px;
   margin: 0 auto;
   width: 100%;
   gap: 10px;
+}
+
+.form-nav-top {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 24px;
 }
 
 .btn-prev {
@@ -744,11 +749,19 @@ html, body {
    RESPONSIVE
 ============================ */
 @media (max-width: 480px) {
-  .welcome-screen, .confirm-screen { padding: 40px 20px; }
-  .form-body { padding: 40px 20px 24px; }
+  .welcome-screen, .confirm-screen { padding: 32px 18px; }
+  .form-body { padding: 20px 16px 12px; }
   .welcome-stats { grid-template-columns: repeat(3, 1fr); }
   .stat-num { font-size: 20px; }
-  .form-nav { padding: 16px 20px 28px; }
+  .form-nav { padding: 10px 16px 20px; }
+  .form-nav-top { padding: 10px 16px; }
+  .option-item { padding: 10px 12px; font-size: 13px; gap: 10px; }
+  .rank-item { padding: 9px 12px; font-size: 12px; }
+  .btn-prev, .btn-next { padding: 10px 14px; font-size: 9px; }
+  .q-hint { margin-left: 36px; }
+  .rank-instruction { margin-left: 36px; }
+  .open-text-field { margin-left: 36px; width: calc(100% - 36px); }
+  .info-inner { padding: 32px 18px; }
 }
 </style>
 </head>
@@ -856,10 +869,28 @@ html, body {
     <div class="progress-bar-fill" id="progressFill"></div>
   </div>
 
+  <!-- TOP NAVIGATION -->
+  <div class="form-nav form-nav-top">
+    <button class="btn-prev" id="btnPrevTop" onclick="prevQ()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Back
+    </button>
+    <button class="btn-next" id="btnNextTop" onclick="nextQ()">
+      OK, next
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="step-counter" id="stepCounterTop"></div>
+  </div>
+
   <div class="form-body">
     <div class="question-card" id="questionCard"></div>
   </div>
 
+  <!-- BOTTOM NAVIGATION -->
   <div class="form-nav">
     <button class="btn-prev" id="btnPrev" onclick="prevQ()">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -1169,25 +1200,30 @@ const QUESTIONS = [
     type: 'single', hint: 'Select one',
     options: [
       'I have not started yet',
-      'I have experimented but nothing is consistent',
-      'I use ChatGPT or similar tools regularly for specific tasks',
-      'I have built at least one workflow or automation using AI'
+      'I have tried it once or twice but have not made it a habit',
+      'I use ChatGPT, Claude, or Gemini occasionally for one-off tasks',
+      'I use AI tools regularly but each task still starts from a blank prompt',
+      'I have built at least one repeatable AI workflow or automation',
+      'I have multiple AI systems running in my business with documented processes'
     ]
   },
   {
     id: 15, cat: 7,
     conditional: true,
     conditionalNote: 'Shown when Q14 is not "I have not started yet"',
-    text: 'What have you already tried with AI?',
+    text: 'Which of these AI tools or approaches have you used in your business?',
     type: 'multi', hint: 'Select all that apply',
     options: [
-      'Writing proposals or client-facing documents',
-      'Generating reports or deliverable summaries',
-      'Researching prospects or opportunities',
-      'Writing social media or marketing content',
-      'Summarizing meetings, calls, or field notes',
-      'Building custom GPTs or agents',
-      'Automating a workflow with Zapier, Make, or similar tools',
+      'ChatGPT for writing, research, or general tasks',
+      'Claude for writing, analysis, or document work',
+      'Gemini or Google AI tools',
+      'Perplexity for research and intelligence gathering',
+      'Notion AI or similar productivity AI integrations',
+      'Custom GPTs or Claude Projects built for specific tasks',
+      'Make.com, Zapier, or n8n for workflow automation',
+      'AI tools for meeting notes or transcription (Otter.ai, Fireflies, Fathom)',
+      'Image or video generation tools (Midjourney, Runway, Adobe Firefly)',
+      'CRM or outreach tools with AI features (Apollo, HubSpot AI, or similar)',
       'I have tried a few things but nothing has stuck'
     ]
   },
@@ -1273,10 +1309,11 @@ function shouldSkip(idx) {
     return q14.length === 0 || q14.includes(0);
   }
 
-  // Q16: only show if Q14 answer is "I have experimented but nothing is consistent" (option 1)
+  // Q16: only show if Q14 answer is "I have tried it once or twice" (option 1)
+  // or "I use AI occasionally" (option 2) — i.e. experimented but not systematic
   if (q.id === 16) {
     var q14 = selections[14] || [];
-    return !q14.includes(1);
+    return !(q14.includes(1) || q14.includes(2));
   }
 
   return false;
@@ -1323,16 +1360,21 @@ function renderQuestion() {
   const q = QUESTIONS[currentIdx];
   const total = QUESTIONS.length;
   const progress = ((currentIdx + 1) / total) * 100;
+  const isLast = isLastQuestion();
+  const submitLabel = 'Submit <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  const nextLabel = 'OK, next <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
 
   document.getElementById('progressFill').style.width = progress + '%';
+
+  // Sync bottom nav
   document.getElementById('stepCounter').textContent = (currentIdx + 1) + ' / ' + total;
   document.getElementById('btnPrev').style.visibility = currentIdx === 0 ? 'hidden' : 'visible';
+  document.getElementById('btnNext').innerHTML = isLast ? submitLabel : nextLabel;
 
-  const isLast = isLastQuestion();
-  const btnNext = document.getElementById('btnNext');
-  btnNext.innerHTML = isLast
-    ? 'Submit <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
-    : 'OK, next <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  // Sync top nav
+  document.getElementById('stepCounterTop').textContent = (currentIdx + 1) + ' / ' + total;
+  document.getElementById('btnPrevTop').style.visibility = currentIdx === 0 ? 'hidden' : 'visible';
+  document.getElementById('btnNextTop').innerHTML = isLast ? submitLabel : nextLabel;
 
   const sel    = selections[q.id] || [];
   const ranked = rankSelections[q.id] || [];
