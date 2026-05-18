@@ -1145,6 +1145,7 @@ function submitInfo() {
   var em    = document.getElementById('field-email').value.trim();
   var co    = document.getElementById('field-company').value.trim();
   var ws    = document.getElementById('field-website').value.trim();
+  if (ws && !ws.match(/^https?:\/\//)) { ws = 'https://' + ws; }
   var valid = true;
 
   document.getElementById('err-firstname').classList.remove('visible');
