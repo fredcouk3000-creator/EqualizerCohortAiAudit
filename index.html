@@ -180,9 +180,9 @@ html, body {
 .form-body {
   flex: 1;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
-  padding: 0 5vw;
+  padding: 0 4vw;
   overflow: hidden;
   min-height: 0;
 }
@@ -192,8 +192,8 @@ html, body {
   max-width: 1200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 12px 0 6px;
+  justify-content: flex-start;
+  padding: 20px 0 12px;
   animation: fadeUp 0.22s ease;
   min-height: 0;
 }
@@ -205,12 +205,12 @@ html, body {
 
 .q-cat-label {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--teal);
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   flex-shrink: 0;
 }
 
@@ -231,7 +231,7 @@ html, body {
 
 .q-text {
   font-family: var(--font-display);
-  font-size: clamp(14px, 2vw, 24px);
+  font-size: clamp(22px, 2.4vw, 34px);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -247,12 +247,12 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 22px;
-  height: 22px;
+  min-width: 30px;
+  height: 30px;
   border: 1px solid rgba(0,191,165,0.3);
   background: rgba(0,191,165,0.08);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--teal);
   flex-shrink: 0;
@@ -261,13 +261,13 @@ html, body {
 
 .q-hint {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   color: var(--amber);
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 8px;
-  margin-left: 34px;
+  margin-bottom: 12px;
+  margin-left: 40px;
   flex-shrink: 0;
 }
 
@@ -284,12 +284,12 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: clamp(6px, 0.9vh, 11px) 14px;
+  padding: clamp(10px, 1.2vh, 16px) 18px;
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(255,255,255,0.02);
   cursor: pointer;
   transition: all 0.14s;
-  font-size: clamp(11px, 1.1vw, 14px);
+  font-size: clamp(14px, 1.4vw, 18px);
   color: rgba(255,255,255,0.75);
   user-select: none;
   -webkit-user-select: none;
@@ -312,12 +312,12 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   border: 1px solid rgba(255,255,255,0.18);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 600;
   color: rgba(255,255,255,0.35);
   flex-shrink: 0;
@@ -338,7 +338,7 @@ html, body {
 /* RANK — DESKTOP TWO-COLUMN GRID */
 .rank-instruction {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 13px;
   color: var(--amber);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -360,11 +360,11 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: clamp(6px, 0.9vh, 10px) 12px;
+  padding: clamp(10px, 1.2vh, 15px) 14px;
   border: 1px solid rgba(255,255,255,0.09);
   background: rgba(255,255,255,0.02);
   cursor: pointer;
-  font-size: clamp(11px, 1.05vw, 13px);
+  font-size: clamp(14px, 1.35vw, 17px);
   color: rgba(255,255,255,0.65);
   transition: all 0.14s;
   user-select: none;
@@ -380,14 +380,14 @@ html, body {
 }
 
 .rank-badge {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   border: 1px solid rgba(255,255,255,0.14);
   color: rgba(255,255,255,0.28);
@@ -408,7 +408,7 @@ html, body {
   border-bottom: 2px solid rgba(255,255,255,0.18);
   color: var(--white);
   font-family: var(--font-body);
-  font-size: clamp(13px, 1.3vw, 16px);
+  font-size: clamp(16px, 1.6vw, 20px);
   padding: 10px 0;
   resize: none;
   outline: none;
@@ -448,10 +448,10 @@ html, body {
   border: 1px solid rgba(255,255,255,0.14);
   color: rgba(255,255,255,0.4);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 9px 16px;
+  padding: 11px 20px;
   cursor: pointer;
   transition: all 0.15s;
   white-space: nowrap;
@@ -467,11 +467,11 @@ html, body {
   border: none;
   color: var(--navy);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
-  padding: 9px 20px;
+  padding: 11px 24px;
   cursor: pointer;
   transition: background 0.15s;
   white-space: nowrap;
