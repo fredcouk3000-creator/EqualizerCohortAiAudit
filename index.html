@@ -761,7 +761,7 @@ html, body {
   <div class="info-inner">
     <div class="info-kicker">Cohort 01 &nbsp;//&nbsp; Before We Begin</div>
     <div class="info-title">First, tell us who you are.</div>
-    <div class="info-sub">Your name and email are used to send your AI Deployment Brief and to set up your cohort profile. Nothing else.</div>
+    <div class="info-sub">Your name and email are used to send your AI Readiness Audit Report. Your website URL is used to audit your web presence as part of the report. Nothing else.</div>
     <div class="info-field-group">
       <div>
         <div class="info-field-label">First Name</div>
@@ -782,6 +782,11 @@ html, body {
         <div class="info-field-label">Company or Business Name</div>
         <input id="field-company" class="info-field-input" type="text" placeholder="Your business name (optional)" autocomplete="organization"/>
       </div>
+      <div>
+        <div class="info-field-label">Business Website URL</div>
+        <input id="field-website" class="info-field-input" type="url" placeholder="https://yourwebsite.com (optional)" autocomplete="url"/>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;font-family:var(--font-mono);letter-spacing:0.04em;">Used to audit your web presence as part of your AI Readiness Report.</div>
+      </div>
     </div>
     <button class="start-btn" onclick="submitInfo()">Continue to Audit </button>
   </div>
@@ -796,7 +801,7 @@ html, body {
     <div class="loading-steps">
       <div class="loading-step active" id="lstep-1"><div class="loading-step-dot"></div>Securing your submission</div>
       <div class="loading-step" id="lstep-2"><div class="loading-step-dot"></div>Sending to EQUALIZ(R) system</div>
-      <div class="loading-step" id="lstep-3"><div class="loading-step-dot"></div>Generating your deployment brief</div>
+      <div class="loading-step" id="lstep-3"><div class="loading-step-dot"></div>Generating your AI Readiness Audit Report</div>
     </div>
   </div>
 </div>
@@ -815,8 +820,8 @@ html, body {
       <p>This is not a formality.</p>
       <p>Your answers here shape <strong>Sessions 1 and 2 directly.</strong> They tell us where your business is losing time, which workflows to prioritize, and which agents to build for your specific operation.</p>
       <p>It takes <strong>8 to 12 minutes.</strong></p>
-      <p>When you submit, we generate your personal <span class="highlight">AI Deployment Brief.</span> That document tells you exactly which 2 to 3 workflows to automate first and why. You will receive it before Session 1.</p>
-      <p>Complete every question. Vague answers produce a generic brief. Specific answers produce a system built around how your business actually works.</p>
+      <p>When you submit, we generate your personal <span class="highlight">AI Readiness Audit Report.</span> That document diagnoses exactly where your business is losing time, which workflows to automate first, and benchmarks you against the top operators in your space. You will receive it before Session 1.</p>
+      <p>Complete every question.</p>
     </div>
 
     <div class="welcome-stats">
@@ -830,7 +835,7 @@ html, body {
       </div>
       <div class="stat-cell">
         <span class="stat-num">1</span>
-        <span class="stat-label">Brief</span>
+        <span class="stat-label">Report</span>
       </div>
     </div>
 
@@ -890,24 +895,24 @@ html, body {
     <div class="confirm-steps">
       <div class="confirm-step">
         <div class="step-num">01</div>
-        <div class="step-text">We are generating your <strong>AI Deployment Brief.</strong> It will arrive in your inbox within 24 hours. It will tell you which 2 to 3 workflows to automate first, based specifically on what you just shared.</div>
+        <div class="step-text">We are generating your <strong>AI Readiness Audit Report.</strong> It will arrive in your inbox shortly. It diagnoses where your business is losing time, which workflows to automate first, and benchmarks you against top operators in your space.</div>
       </div>
       <div class="confirm-step">
         <div class="step-num">02</div>
-        <div class="step-text"><strong>Read it before Session 1.</strong> The brief is the foundation for your first two sessions. Participants who review it in advance get significantly more out of Week 1.</div>
+        <div class="step-text"><strong>Read your report before Session 1.</strong> It is the foundation for your first two sessions. Come ready to discuss what you found.</div>
       </div>
       <div class="confirm-step">
         <div class="step-num">03</div>
-        <div class="step-text">Check your inbox for your <strong>Slack invite</strong> and join the EQUALIZ(R) Cohort 01 workspace. Your resource Google Sheet link is in that same email.</div>
+        <div class="step-text">This week you will receive a link to set up your <strong>personal AI workstation</strong> and your first pre-work assignment: drafting your <strong>Co-Brain.</strong> Your Co-Brain is a dedicated source of truth for your business, brand, style, and preferences. It is central to everything you will build in the cohort.</div>
       </div>
       <div class="confirm-step">
         <div class="step-num">04</div>
-        <div class="step-text">Session 1 is <strong>May 19.</strong> Come with your audit reviewed, your Slack access confirmed, and your Google Sheet open. That is all you need to arrive ready.</div>
+        <div class="step-text"><strong>Session 1 is Monday, May 25 at 7pm EST.</strong> Sessions run Mondays and Thursdays from 7 to 8pm EST. Join the Slack channel now and introduce yourself. Post any questions there.</div>
       </div>
     </div>
 
     <div class="confirm-sign">
-      See you on the 19th. &nbsp;//&nbsp; <span>EQUALIZ(R) by Global Air U</span>
+      See you on the 25th. &nbsp;//&nbsp; <span>EQUALIZ(R) by Global Air U</span>
     </div>
   </div>
 </div>
@@ -921,13 +926,14 @@ var MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/h1yclo1ct9425c6qd84ucagez963mj
 // ============================================================
 // PARTICIPANT INFO
 // ============================================================
-var participant = { firstName: '', lastName: '', email: '', company: '' };
+var participant = { firstName: '', lastName: '', email: '', company: '', website: '' };
 
 function submitInfo() {
   var fn    = document.getElementById('field-firstname').value.trim();
   var ln    = document.getElementById('field-lastname').value.trim();
   var em    = document.getElementById('field-email').value.trim();
   var co    = document.getElementById('field-company').value.trim();
+  var ws    = document.getElementById('field-website').value.trim();
   var valid = true;
 
   document.getElementById('err-firstname').classList.remove('visible');
@@ -946,6 +952,7 @@ function submitInfo() {
   participant.lastName  = ln;
   participant.email     = em;
   participant.company   = co;
+  participant.website   = ws;
 
   startForm();
 }
@@ -1443,6 +1450,7 @@ function buildPayload() {
       last_name:    participant.lastName,
       email:        participant.email,
       company:      participant.company,
+      website:      participant.website,
       full_name:    participant.firstName + ' ' + participant.lastName
     },
     responses: []
