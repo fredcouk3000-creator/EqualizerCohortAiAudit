@@ -1409,8 +1409,19 @@ function startForm() {
 // ============================================================
 function renderQuestion() {
   const q = QUESTIONS[currentIdx];
-  const total = QUESTIONS.length;
-  const progress = ((currentIdx + 1) / total) * 100;
+
+  // Calculate visible question number and visible total correctly
+  // Count only questions that are not skipped
+  let visibleNum = 0;
+  let visibleTotal = 0;
+  for (var i = 0; i < QUESTIONS.length; i++) {
+    if (!shouldSkip(i)) {
+      visibleTotal++;
+      if (i <= currentIdx) visibleNum++;
+    }
+  }
+
+  const progress = (visibleNum / visibleTotal) * 100;
   const isLast = isLastQuestion();
   const submitLabel = 'Submit <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
   const nextLabel = 'OK, next <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
@@ -1418,12 +1429,12 @@ function renderQuestion() {
   document.getElementById('progressFill').style.width = progress + '%';
 
   // Sync bottom nav
-  document.getElementById('stepCounter').textContent = (currentIdx + 1) + ' / ' + total;
+  document.getElementById('stepCounter').textContent = visibleNum + ' / ' + visibleTotal;
   document.getElementById('btnPrev').style.visibility = currentIdx === 0 ? 'hidden' : 'visible';
   document.getElementById('btnNext').innerHTML = isLast ? submitLabel : nextLabel;
 
   // Sync top nav
-  document.getElementById('stepCounterTop').textContent = (currentIdx + 1) + ' / ' + total;
+  document.getElementById('stepCounterTop').textContent = visibleNum + ' / ' + visibleTotal;
   document.getElementById('btnPrevTop').style.visibility = currentIdx === 0 ? 'hidden' : 'visible';
   document.getElementById('btnNextTop').innerHTML = isLast ? submitLabel : nextLabel;
 
